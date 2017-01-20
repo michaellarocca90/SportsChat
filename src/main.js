@@ -10,9 +10,15 @@ import {APP_ID} from './consts'
 import OpenChannel from './pages/openChannel'; 
 import Login from './pages/login';
 import SendBird from 'sendbird';
+import CreateChannel from './pages/createChannel';
+import Chat from './pages/chat';
+
 var ROUTES = {
   login: Login,
-  openChannel: OpenChannel
+  openChannel: OpenChannel,
+  createChannel: CreateChannel,
+  chat: Chat
+
 };
  
 export default class Main extends Component {
