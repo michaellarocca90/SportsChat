@@ -90,6 +90,9 @@ export default class Login extends Component {
       });
     });
   }
+  _onPressSportsChannel(){
+    this.props.navigator.push({name: 'sportsChannel'});
+  }
 
   _onPressOpenChannel() {
     this.props.navigator.push({name: 'openChannel'});
@@ -163,6 +166,12 @@ export default class Login extends Component {
             style={this._buttonStyle()}
             disabled={this.state.buttonDisabled}
             onPress={this._onPressGroupChannel}
+          />
+          <Button
+            text={'Sports Channel'}
+            style={this._buttonStyle()}
+            disabled={this.state.buttonDisabled}
+            onPress={this._onPressSportsChannel}
           />
         </View>
       </View>

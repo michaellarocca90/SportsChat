@@ -12,12 +12,25 @@ import Login from './pages/login';
 import SendBird from 'sendbird';
 import CreateChannel from './pages/createChannel';
 import Chat from './pages/chat';
+import Participants from './pages/participants';
+import BlockList from './pages/blockList';
+import GroupChannel from './pages/groupChannel';
+import InviteUser from './pages/inviteUser';
+import Members from './pages/members';
+
 
 var ROUTES = {
   login: Login,
   openChannel: OpenChannel,
   createChannel: CreateChannel,
-  chat: Chat
+  chat: Chat,
+  participants: Participants,
+  blockList: BlockList,
+  groupChannel: GroupChannel,
+  inviteUser: InviteUser,
+  members: Members,
+  //sportsChannel: SportsChannel
+
 
 };
  
