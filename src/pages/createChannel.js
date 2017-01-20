@@ -29,7 +29,7 @@ export default class CreateChannel extends Component {
     this.setState({
       channelName: channelName,
       disable: (channelName.trim().length > 0) ? false : true
-    })
+    });
   }
 
   _onBackPress() {
@@ -67,14 +67,14 @@ export default class CreateChannel extends Component {
       <View style={styles.container}>
         <TopBar
           onBackPress={this._onBackPress}
-          title='Create OpenChannel'
+          title='Create SportsChannel'
            />
         <View style={styles.createContainer}>
           <TextInput
             style={styles.textInput}
             value={this.state.channelName}
             onChangeText={this._onChangeText}
-            placeholder={'Open Channel Name'}
+            placeholder={'Sports Channel Name'}
             maxLength={12}
             multiline={false}
             autoFocus={true}

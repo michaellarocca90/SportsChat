@@ -24,7 +24,8 @@ export default class Login extends Component {
     };
     this._onPressConnect = this._onPressConnect.bind(this);
     this._onPressOpenChannel = this._onPressOpenChannel.bind(this);
-    this._onPressGroupChannel = this._onPressGroupChannel.bind(this)
+    this._onPressGroupChannel = this._onPressGroupChannel.bind(this);
+    this._onPressSportsChannel = this._onPressSportsChannel.bind(this);
   }
 
    _onPressConnect() {
@@ -91,10 +92,12 @@ export default class Login extends Component {
     });
   }
   _onPressSportsChannel(){
+    console.log(this.props);
     this.props.navigator.push({name: 'sportsChannel'});
   }
 
   _onPressOpenChannel() {
+    console.log(this.props);
     this.props.navigator.push({name: 'openChannel'});
   }
 
@@ -155,12 +158,7 @@ export default class Login extends Component {
 
           <Text style={styles.errorLabel}>{this.state.errorMessage}</Text>
 
-          <Button
-            text={'Open Channel'}
-            style={this._buttonStyle()}
-            disabled={this.state.buttonDisabled}
-            onPress={this._onPressOpenChannel}
-          />
+          
           <Button
             text={'Group Channel'}
             style={this._buttonStyle()}
@@ -168,7 +166,7 @@ export default class Login extends Component {
             onPress={this._onPressGroupChannel}
           />
           <Button
-            text={'Sports Channel'}
+            text={'Sports Channels'}
             style={this._buttonStyle()}
             disabled={this.state.buttonDisabled}
             onPress={this._onPressSportsChannel}

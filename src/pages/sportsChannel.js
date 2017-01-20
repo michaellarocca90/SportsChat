@@ -11,7 +11,8 @@ import {
 import {APP_ID, PULLDOWN_DISTANCE} from '../consts';
 import TopBar from '../components/topBar';
 import SendBird from 'sendbird';
-//import Sports from 'sports-live';
+//var api = require('nfl_scores');
+
 var sb = null;
 
 export default class SportsChannel extends Component {
@@ -67,7 +68,7 @@ export default class SportsChannel extends Component {
         }
       }
       _SELF.props.navigator.push({name: 'chat', channel: channel, refresh: _SELF._refresh});
-    })
+    });
   }
 
   _getChannelList() {
@@ -119,7 +120,7 @@ export default class SportsChannel extends Component {
         <TopBar
           onBackPress={this._onBackPress}
           onCreateOpenChannel={this._onCreateOpenChannel}
-          title='Open Channel'
+          title='Sports Channels'
            />
 
         <View style={styles.listContainer}>
