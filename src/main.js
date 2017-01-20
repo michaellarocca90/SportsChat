@@ -17,6 +17,7 @@ import BlockList from './pages/blockList';
 import GroupChannel from './pages/groupChannel';
 import InviteUser from './pages/inviteUser';
 import Members from './pages/members';
+import SportsChannel from './pages/sportsChannel';
 
 
 var ROUTES = {
@@ -29,7 +30,7 @@ var ROUTES = {
   groupChannel: GroupChannel,
   inviteUser: InviteUser,
   members: Members,
-  //sportsChannel: SportsChannel
+  sportsChannel: SportsChannel
 
 
 };

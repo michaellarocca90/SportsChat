@@ -59,7 +59,7 @@ export default class CreateChannel extends Component {
       borderColor: '#6E5BAA',
       disabledColor: '#ababab',
       textColor: '#ffffff'
-    }
+    };
   }
 
   render() {
