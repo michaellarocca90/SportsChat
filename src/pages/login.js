@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
+  Image,
   TextInput,
   TouchableHighlight,
   StyleSheet,
+  ScrollView,
   Platform
 } from 'react-native';
 import Button from '../components/button'
 import SendBird from 'sendbird';
+//import TextInput from 'react-native-md-textinput';
 var sb = null;
  
 export default class Login extends Component {
@@ -18,7 +21,7 @@ export default class Login extends Component {
     this.state = {
       userId: '',
       username: '',
-      connectLabel: 'CONNECT',
+      connectLabel: 'Login',
       buttonDisabled: true,
       errorMessage: ''
     };
@@ -85,19 +88,19 @@ export default class Login extends Component {
       sb.updateCurrentUserInfo(_SELF.state.username, '', function(response, error) {
         _SELF.setState({
           buttonDisabled: false,
-          connectLabel: 'DISCONNECT',
+          connectLabel: 'Logout',
           errorMessage: ''
         });
       });
     });
   }
   _onPressSportsChannel(){
-    console.log(this.props);
+    
     this.props.navigator.push({name: 'sportsChannel'});
   }
 
   _onPressOpenChannel() {
-    console.log(this.props);
+    
     this.props.navigator.push({name: 'openChannel'});
   }
 
@@ -112,13 +115,13 @@ export default class Login extends Component {
       username: '',
       errorMessage: '',
       buttonDisabled: true,
-      connectLabel: 'CONNECT'
+      connectLabel: 'Login'
     });
   }
 
   _buttonStyle() {
     return {
-      backgroundColor: '#6E5BAA',
+      backgroundColor: '#f44242',
       underlayColor: '#51437f',
       borderColor: '#6E5BAA',
       disabledColor: '#ababab',
@@ -131,8 +134,10 @@ export default class Login extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <Image source={require('../img/back.jpg')} style={styles.container}>
         <View style={styles.loginContainer}>
+          <Text style={styles.bigblue}>SportsChat</Text>
+          <Text ></Text>
           <TextInput
             style={styles.input}
             value={this.state.userId}
@@ -172,19 +177,21 @@ export default class Login extends Component {
             onPress={this._onPressSportsChannel}
           />
         </View>
-      </View>
+      </Image>
     );
   }
 
   
 };
- 
+ //'#466368' = purple
 var styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'stretch',
-    backgroundColor: '#6E5BAA'
+    alignItems: 'center',
+    //backgroundColor: '#00BCD4',
+    width: null,
+    height: null
   },
   loginContainer: {
     flex: 1,
@@ -211,6 +218,11 @@ var styles = StyleSheet.create({
     padding: 10,
     marginTop: 10,
     backgroundColor: '#32c5e6'
+  },
+   bigblue: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 30,
   },
   label: {
     width: 230,

@@ -11,6 +11,7 @@ import {
 import {APP_ID, PULLDOWN_DISTANCE} from '../consts';
 import TopBar from '../components/topBar';
 import SendBird from 'sendbird';
+import axios from 'axios';
 //var api = require('nfl_scores');
 
 var sb = null;
@@ -22,6 +23,7 @@ export default class SportsChannel extends Component {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       channelList: [],
+      sportsChannelList:[],
       dataSource: ds.cloneWithRows([]),
       listQuery: sb.OpenChannel.createOpenChannelListQuery()
     };
@@ -111,7 +113,18 @@ export default class SportsChannel extends Component {
   }
 
   _onCreateOpenChannel() {
-    this.props.navigator.push({name: 'createChannel', refresh: this._refresh});
+    var _SELF = this;
+    var config = {
+      headers: {'Ocp-Apim-Subscription-Key': '2208ddac040841ee88e62549ce035269'}
+    };
+
+    axios.get('https://api.fantasydata.net/v3/nfl/scores/JSON/CurrentWeek', config)
+    .then(function(response){
+      console.log(response);
+       _SELF.props.navigator.push({name: 'createChannel', refresh: this._refresh, games: response.data});
+    })
+
+    //this.props.navigator.push({name: 'createChannel', refresh: this._refresh});
   }
 
   render() {

@@ -7,7 +7,7 @@ import {
   Platform
 } from 'react-native';
 import {APP_ID} from './consts' 
-import OpenChannel from './pages/openChannel'; 
+
 import Login from './pages/login';
 import SendBird from 'sendbird';
 import CreateChannel from './pages/createChannel';
@@ -22,7 +22,7 @@ import SportsChannel from './pages/sportsChannel';
 
 var ROUTES = {
   login: Login,
-  openChannel: OpenChannel,
+  //openChannel: OpenChannel,
   createChannel: CreateChannel,
   chat: Chat,
   participants: Participants,
@@ -47,8 +47,13 @@ export default class Main extends Component {
         sb.setBackgroundState();
       }
     });
+
     
   }
+    
+  
+
+
 
   render() {
     return (

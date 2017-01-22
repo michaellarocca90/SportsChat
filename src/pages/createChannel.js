@@ -54,7 +54,7 @@ export default class CreateChannel extends Component {
 
   _buttonStyle() {
     return {
-      backgroundColor: '#6E5BAA',
+      backgroundColor: '#f44242',
       underlayColor: '#51437f',
       borderColor: '#6E5BAA',
       disabledColor: '#ababab',
@@ -81,6 +81,12 @@ export default class CreateChannel extends Component {
           />
           <Button
             text={'CREATE'}
+            style={this._buttonStyle()}
+            disabled={this.state.disable}
+            onPress={this._onPressCreateChannel}
+          />
+          <Button
+            text={this.props.route.games}
             style={this._buttonStyle()}
             disabled={this.state.disable}
             onPress={this._onPressCreateChannel}
