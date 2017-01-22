@@ -53,25 +53,25 @@ export default class CreateChannel extends Component {
     });
   }
 
-  //  _onPressCreateGame(game) { 
-  //   this.setState({
-  //     channelName: game
-  //   });
-  //   var _SELF = this;
-  //   sb.OpenChannel.createChannel(_SELF.state.channelName, '', '', [sb.currentUser.userId], function (channel, error) {
-  //     if (error) {
-  //       console.log('Create OpenChannel Fail.', error);
-  //       return;
-  //     }
-  //     channel.enter(function(response, error) {
-  //       if (error) {
-  //         console.log('Enter openChannel Fail.', error);
-  //       }
-  //       _SELF.props.navigator.replace({name: 'chat', channel: channel, refresh: _SELF.props.route.refresh});
-  //     })
-  //   });
+   _onPressCreateGame(game) { 
+    // this.setState({
+    //   channelName: game
+    // });
+    var _SELF = this;
+    sb.OpenChannel.createChannel(game, '', '', [sb.currentUser.userId], function (channel, error) {
+      if (error) {
+        console.log('Create OpenChannel Fail.', error);
+        return;
+      }
+      channel.enter(function(response, error) {
+        if (error) {
+          console.log('Enter openChannel Fail.', error);
+        }
+        _SELF.props.navigator.replace({name: 'chat', channel: channel, refresh: _SELF.props.route.refresh});
+      })
+    });
    
-  // }
+  }
 
   _buttonStyle() {
     return {
