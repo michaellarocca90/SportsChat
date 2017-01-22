@@ -23,7 +23,7 @@ export default class SportsChannel extends Component {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       channelList: [],
-      sportsChannelList:[],
+      //sportsChannelList:[],
       dataSource: ds.cloneWithRows([]),
       listQuery: sb.OpenChannel.createOpenChannelListQuery()
     };
@@ -115,13 +115,13 @@ export default class SportsChannel extends Component {
   _onCreateOpenChannel() {
     var _SELF = this;
     var config = {
-      headers: {'Ocp-Apim-Subscription-Key': '2208ddac040841ee88e62549ce035269'}
+      headers: {'Ocp-Apim-Subscription-Key': 'c20ea00862a74fccb04e95dc72a0058c'}
     };
 
-    axios.get('https://api.fantasydata.net/v3/nfl/scores/JSON/CurrentWeek', config)
+    axios.get('https://api.fantasydata.net/v3/nba/scores/JSON/GamesByDate/2017-JAN-22', config)
     .then(function(response){
-      console.log(response);
-       _SELF.props.navigator.push({name: 'createChannel', refresh: this._refresh, games: response.data});
+      
+      _SELF.props.navigator.push({name: 'createChannel', refresh: _SELF._refresh, games: response.data});
     })
 
     //this.props.navigator.push({name: 'createChannel', refresh: this._refresh});

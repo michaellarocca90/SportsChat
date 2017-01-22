@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   View,
+  ScrollView,
   TextInput,
   StyleSheet
 } from 'react-native'
@@ -18,7 +19,7 @@ export default class CreateChannel extends Component {
     sb = SendBird.getInstance();
     this.state = {
       channelName: '',
-      disable: true
+      disable: false
     };
     this._onChangeText = this._onChangeText.bind(this);
     this._onBackPress = this._onBackPress.bind(this);
@@ -52,6 +53,26 @@ export default class CreateChannel extends Component {
     });
   }
 
+  //  _onPressCreateGame(game) { 
+  //   this.setState({
+  //     channelName: game
+  //   });
+  //   var _SELF = this;
+  //   sb.OpenChannel.createChannel(_SELF.state.channelName, '', '', [sb.currentUser.userId], function (channel, error) {
+  //     if (error) {
+  //       console.log('Create OpenChannel Fail.', error);
+  //       return;
+  //     }
+  //     channel.enter(function(response, error) {
+  //       if (error) {
+  //         console.log('Enter openChannel Fail.', error);
+  //       }
+  //       _SELF.props.navigator.replace({name: 'chat', channel: channel, refresh: _SELF.props.route.refresh});
+  //     })
+  //   });
+   
+  // }
+
   _buttonStyle() {
     return {
       backgroundColor: '#f44242',
@@ -62,7 +83,18 @@ export default class CreateChannel extends Component {
     };
   }
 
+
   render() {
+
+    var _SELF = this;
+    var gameSchedule = this.props.route.games;
+    var gamesToday =[];
+
+    gameSchedule.forEach(function(obj){
+      var AwayTeam = obj.AwayTeam;
+      gamesToday.push(AwayTeam.concat(' vs ', obj.HomeTeam));
+    });
+     
     return (
       <View style={styles.container}>
         <TopBar
@@ -85,12 +117,19 @@ export default class CreateChannel extends Component {
             disabled={this.state.disable}
             onPress={this._onPressCreateChannel}
           />
-          <Button
-            text={this.props.route.games}
-            style={this._buttonStyle()}
-            disabled={this.state.disable}
-            onPress={this._onPressCreateChannel}
-          />
+          <ScrollView>
+            {gamesToday.map(function(game,i){
+              return (
+                 <Button
+                  key={i}
+                  text={game}
+                  style={_SELF._buttonStyle()}
+                  disabled={_SELF.state.disable}
+                  onPress={() => _SELF._onPressCreateGame(game)}
+                />
+              )
+            })}
+         </ScrollView>
         </View>
       </View>
     )
