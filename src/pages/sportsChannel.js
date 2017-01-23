@@ -118,7 +118,7 @@ export default class SportsChannel extends Component {
       headers: {'Ocp-Apim-Subscription-Key': 'c20ea00862a74fccb04e95dc72a0058c'}
     };
 
-    axios.get('https://api.fantasydata.net/v3/nba/scores/JSON/GamesByDate/2017-JAN-22', config)
+    axios.get('https://api.fantasydata.net/v3/nba/scores/JSON/GamesByDate/2017-JAN-23', config)
     .then(function(response){
       
       _SELF.props.navigator.push({name: 'createChannel', refresh: _SELF._refresh, games: response.data});
@@ -133,7 +133,7 @@ export default class SportsChannel extends Component {
         <TopBar
           onBackPress={this._onBackPress}
           onCreateOpenChannel={this._onCreateOpenChannel}
-          title='Sports Channels'
+          title='Join Game Chats'
            />
 
         <View style={styles.listContainer}>

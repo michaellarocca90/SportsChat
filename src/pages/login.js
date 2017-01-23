@@ -165,13 +165,13 @@ export default class Login extends Component {
 
           
           <Button
-            text={'Group Channel'}
+            text={'Group Chat'}
             style={this._buttonStyle()}
             disabled={this.state.buttonDisabled}
             onPress={this._onPressGroupChannel}
           />
           <Button
-            text={'Sports Channels'}
+            text={'Game Chats'}
             style={this._buttonStyle()}
             disabled={this.state.buttonDisabled}
             onPress={this._onPressSportsChannel}

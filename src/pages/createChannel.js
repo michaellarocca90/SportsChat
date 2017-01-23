@@ -99,24 +99,9 @@ export default class CreateChannel extends Component {
       <View style={styles.container}>
         <TopBar
           onBackPress={this._onBackPress}
-          title='Create SportsChannel'
+          title='NBA Games Today'
            />
         <View style={styles.createContainer}>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.channelName}
-            onChangeText={this._onChangeText}
-            placeholder={'Sports Channel Name'}
-            maxLength={12}
-            multiline={false}
-            autoFocus={true}
-          />
-          <Button
-            text={'CREATE'}
-            style={this._buttonStyle()}
-            disabled={this.state.disable}
-            onPress={this._onPressCreateChannel}
-          />
           <ScrollView>
             {gamesToday.map(function(game,i){
               return (
